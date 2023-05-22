@@ -1,11 +1,11 @@
 import React, { Suspense } from "react";
-import { assertIsPosts, getPosts } from "./getPosts";
+import { assertIsPosts } from "./getPosts";
 import { PostData } from "./types";
 import { PostsList } from "./PostsList";
 import { savePost } from "./savePost";
 import { NewPostForm } from "./NewPostForm";
 import { useLoaderData, Await, useNavigate } from "react-router-dom";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function PostsPage() {
   const navigate = useNavigate();
