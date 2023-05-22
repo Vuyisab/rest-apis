@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getPosts } from "./getPosts";
-import { PostData } from "./types";
+import { PostData, NewPostData } from "./types";
 import { PostsList } from "./PostsList";
+import { savePost } from "./savePost";
+import { NewPostForm } from "./NewPostForm";
 
 export function PostsPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +24,11 @@ export function PostsPage() {
     };
   }, []);
 
+  async function handleSave(newPostData: NewPostData) {
+    const newPost = await savePost(newPostData);
+    setPosts([newPost, ...posts]);
+  }
+
   if (isLoading) {
     return <div className="w-96 mx-auto mt-6">Loading ...</div>;
   }
@@ -29,6 +36,7 @@ export function PostsPage() {
   return (
     <div className="w-96 mx-auto mt-6">
       <h2 className="text-xl text-slate-900 font-bold">Posts</h2>
+      <NewPostForm onSave={handleSave} />
       <PostsList posts={posts} />
     </div>
   );
