@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { Suspense } from "react";
 import { assertIsPosts } from "./getPosts";
 import { PostData, NewPostData } from "./types";
 import { PostsList } from "./PostsList";
